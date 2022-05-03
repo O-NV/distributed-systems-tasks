@@ -23,7 +23,10 @@ The execution of the code may have problems because of the ports that are runnin
 ```bash
 sudo lsof -nP -iTCP -sTCP:LISTEN
 ```
-and if you need to stop them run in your console: ```bash sudo kill -9 ID_CONTAINER```
+and if you need to stop them run in your console: 
+```bash
+sudo kill -9 PID
+```
 
 ### Run the application
 Open [http://localhost:3000/inventory/search](http://localhost:3000/inventory/search) to view it in your browser, this will display all the information available in the database. To start a search you must open [http://localhost:3000/inventory/search?q=SEARCH](http://localhost:3000/inventory/search?q=SEARCH). Where SEARCH is the parameter that you want to search for.
