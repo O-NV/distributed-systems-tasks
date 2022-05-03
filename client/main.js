@@ -34,30 +34,41 @@ app.use(session({
 }));
 
 app.get("/inventory/search", async (req, res) => {
-  const name =  req.query.q? req.query.q: '';
+  const name =  req.query.q;
 
 console.log(`Nombre buscado: ${name}`);
-    await redisClient.get(!name?'all':name, (error, data) => {
-        if (error) {
-            console.log(error);
-        }
+    if(name && name !== ""){
+        await redisClient.get(name, (error, data) => {
+            if (error) {
+                console.log(error);
+            }
 
-        if(data === null) {
-            grpc.GetItem ({ name: name }, async(error, data) => {
-                if (error){
-                   console.log(error);
-                   res.json({});
-                } res.json(data);
-            
-                const save = await redisClient.set(!name?'all':name, JSON.stringify(data));
-              });
-              
-              console.log('La respuesta viene desde el servidor');
-        } else {
-            console.log('La respuesta viene desde Redis');
-            res.json(JSON.parse(data));
-        }
-    });
+            if(data === null) {
+                grpc.GetItem ({ name: name }, async(error, data) => {
+                    if (error){
+                    console.log(error);
+                    res.json({});
+                    } res.json(data);
+                
+                    const save = await redisClient.set(name, JSON.stringify(data));
+                });
+                
+                console.log('La respuesta viene desde el servidor');
+            } else {
+                console.log('La respuesta viene desde Redis');
+                res.json(JSON.parse(data));
+            }
+        });
+    }
+    else{
+        grpc.GetItem ({ name: ""}, async(error, data) => {
+            if (error){
+            console.log(error);
+            res.json({});
+            } res.json(data);
+        });
+        console.log('La respuesta viene desde el servidor');
+    }
 });
 
 app.listen(3000, () => {
