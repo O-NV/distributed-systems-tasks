@@ -6,9 +6,9 @@ Intengrantes:
 
 ## Task 1: Cache and RPC
 
-The objective of this assignment is to put into practice the concepts of Cache and RPC seen in class. To do so, the student will have to make use of technologies that will allow him/her to solve the problem posed.
+The objective of this assignment is to put into practice the concepts of Cache and RPC seen in class. To do so, we will make use of technologies that allow us to solve the problem.
 
-For this, a client and a server were created, both connected through gRPC, where the gRPC client is a REST api that connects to Redis to manage the api cache and the gRPC-server connects to the database if the requested query is not found in cache.
+For this, a client and a server have been created, both connected through gRPC, where the gRPC client is a REST api that connects to Redis to manage the api cache. Analogously the gRPC server connects to the database if the requested query is not found in the cache
 
 The configuration applied in redis is:
 
