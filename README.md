@@ -34,8 +34,8 @@ To check the insertion of data in the cache you can check it by opening [http://
 ### Cache configuration
 The configuration applied in Redis is:
 
-- ```maxmemory 100mb```
-- ```maxmemory-policy allkeys-lru```
+- Cache memory: this is done using the command ```maxmemory 100mb```
+- Removal algorithm: for this purpose the following command is used ```maxmemory-policy allkeys-lru```
 
 You can see how the parameters were set in the file "docker-compose.yaml". 
 
