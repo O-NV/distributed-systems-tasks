@@ -24,7 +24,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./Client/main.js:/app/index.js
+      - ./client/main.js:/app/index.js
   server:
     container_name: server
     build:
