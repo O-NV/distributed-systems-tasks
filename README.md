@@ -10,12 +10,6 @@ The objective of this assignment is to put into practice the concepts of Cache a
 
 For this, a client and a server have been created, both connected through gRPC, where the gRPC client is a REST api that connects to Redis to manage the api cache. Analogously the gRPC server connects to the database if the requested query is not found in the cache
 
-The configuration applied in redis is:
-
-- maxmemory 100mb
-- maxmemory-policy allkeys-lru
-
-You can see how the parameters were set in the file "docker-compose.yaml". 
 
 ### Instructions for code execution:
 ```bash
@@ -33,3 +27,14 @@ and if you need to stop them run in your console: ```bash sudo kill -9 ID_CONTAI
 
 ### Run the application
 Open [http://localhost:3000/inventory/search](http://localhost:3000/inventory/search) to view it in your browser, this will display all the information available in the database. To start a search you must open [http://localhost:3000/inventory/search?q=SEARCH](http://localhost:3000/inventory/search?q=SEARCH). Where SEARCH is the parameter that you want to search for.
+
+### Cache verification
+
+
+### Cache configuration
+The configuration applied in Redis is:
+
+- maxmemory 100mb
+- maxmemory-policy allkeys-lru
+
+You can see how the parameters were set in the file "docker-compose.yaml". 
