@@ -36,9 +36,8 @@ app.use(session({
 app.get("/inventory/search", async (req, res) => {
   const name =  req.query.q? req.query.q: '';
 
-console.log(name);
+console.log(`Nombre buscado: ${name}`);
     await redisClient.get(!name?'all':name, (error, data) => {
-        // console.log(data);
         if (error) {
             console.log(error);
         }
@@ -51,12 +50,11 @@ console.log(name);
                 } res.json(data);
             
                 const save = await redisClient.set(!name?'all':name, JSON.stringify(data));
-                // console.log(save);
               });
               
-              console.log('no cache');
+              console.log('La respuesta viene desde el servidor');
         } else {
-            console.log('si cache');
+            console.log('La respuesta viene desde Redis');
             res.json(JSON.parse(data));
         }
     });

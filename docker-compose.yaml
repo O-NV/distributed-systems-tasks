@@ -10,6 +10,7 @@ services:
       - "6379:6379"
     command: /opt/bitnami/scripts/redis/run.sh --maxmemory 100mb --maxmemory-policy allkeys-lru
   client:
+    container_name: client
     build:
       context: ./client
       dockerfile: Dockerfile
@@ -25,6 +26,7 @@ services:
     volumes:
       - ./Client/main.js:/app/index.js
   server:
+    container_name: server
     build:
       context: ./server
       dockerfile: Dockerfile
@@ -35,6 +37,7 @@ services:
       - POSTGRESQL_HOST=postgresql
       - SERVER_HOST=server
   postgresql:
+    container_name: postgres
     build:
       context: ./database
       dockerfile: Dockerfile
@@ -47,11 +50,10 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
       - POSTGRESQL_PASSWORD=123
   redis-commander:
+    container_name: rediscommander
     image: rediscommander/redis-commander:latest
     restart: always
     environment:
         - REDIS_HOSTS=caching
     ports:
         - 8081:8081
-
-    

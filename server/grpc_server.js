@@ -43,6 +43,4 @@ const server = () => {
   });
 };
 
-// exports.server = server;
-
 server();
