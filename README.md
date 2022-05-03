@@ -48,3 +48,9 @@ The LRU cache data removal policy prioritizes short-term hits by discarding asse
 ### Removal method justification
 
 LRU was chosen because, being a search engine, it is necessary to keep in cache the most requested queries in the short term and remove those that are not being requested.
+
+### Images dockers used
+- Redis:[https://hub.docker.com/r/bitnami/redis/](https://hub.docker.com/r/bitnami/redis/)
+- Redis-commander: [https://hub.docker.com/r/rediscommander/redis-commander](https://hub.docker.com/r/rediscommander/redis-commander)
+- Postgresql: [https://hub.docker.com/r/bitnami/postgresql/](https://hub.docker.com/r/bitnami/postgresql/)
+- Node: [https://hub.docker.com/_/node](https://hub.docker.com/_/node)
