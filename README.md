@@ -29,13 +29,13 @@ and if you need to stop them run in your console: ```bash sudo kill -9 ID_CONTAI
 Open [http://localhost:3000/inventory/search](http://localhost:3000/inventory/search) to view it in your browser, this will display all the information available in the database. To start a search you must open [http://localhost:3000/inventory/search?q=SEARCH](http://localhost:3000/inventory/search?q=SEARCH). Where SEARCH is the parameter that you want to search for.
 
 ### Cache verification
-
+To check the insertion of data in the cache you can check it by opening [http://localhost:8081](http://localhost:8081) . This opens the Redis database where the requests made in the search engine are stored.
 
 ### Cache configuration
 The configuration applied in Redis is:
 
-- maxmemory 100mb
-- maxmemory-policy allkeys-lru
+- ```maxmemory 100mb```
+- ```maxmemory-policy allkeys-lru```
 
 You can see how the parameters were set in the file "docker-compose.yaml". 
 
