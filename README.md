@@ -1,6 +1,6 @@
 ## Distributed systems 
 
-Intengrantes:
+Members:
 - Oscar Castro
 - Valeria Navarrete
 
@@ -39,6 +39,12 @@ The configuration applied in Redis is:
 
 You can see how the parameters were set in the file "docker-compose.yaml". 
 
+### LRU vs LFU
+
 LRU  | LFU
 ------------- | -------------
 The LRU cache data removal policy prioritizes short-term hits by discarding assets that have been used the least in a certain period of time. It sorts them by their number of uses. It uses the time each cached item has been in cache for its removal. | The LFU cache data removal policy prioritizes long term hits by discarding from the cache the assets that will be used the least later. For this it needs to know how many hits each cached data has had.
+
+### Removal method justification
+
+LRU was chosen because, being a search engine, it is necessary to keep in cache the most requested queries in the short term and remove those that are not being requested.
