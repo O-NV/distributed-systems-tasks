@@ -4,7 +4,7 @@ WORKDIR /home/node
 
 COPY . .
 
-RUN chown -R 777 blocked.json
-RUN npm install
+RUN chmod -R 777 blocked.json
+RUN npm install 
 
 CMD [ "npm", "start" ]

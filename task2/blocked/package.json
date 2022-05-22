@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,7 +14,6 @@
     "express": "^4.18.1",
     "fs": "^0.0.1-security",
     "kafkajs": "^2.0.0",
-    "luxon": "^2.2.0",
-    "nodemon": "^2.0.16"
+    "luxon": "^2.2.0"
   }
 }

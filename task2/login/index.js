@@ -20,7 +20,7 @@ app.post("/login", async (req, res) => {
     await producer.send({
       topic: 'topic-name',
       messages: [
-        { value: JSON.stringify(user) },
+        { key: JSON.stringify(user.user), value: JSON.stringify(user) },
     ],
   })
   

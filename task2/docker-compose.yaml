@@ -47,5 +47,6 @@ services:
       kafkaHost: kafka:9092
     volumes:
       - ./blocked/index.js:/app/index.js
+      - ./blocked/blocked.json:/app/blocked.json
     ports:
       - 5000:3000
