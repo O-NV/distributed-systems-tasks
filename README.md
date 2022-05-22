@@ -1,5 +1,15 @@
-# distributed-systems-tasks
+## Distributed systems 
 
 This repository is intended to show the development of the tasks of Sistemas Distruidos during the first half of 2022.
 
 Inside each folder you can find the instructions for the code execution and additional information.
+
+Members:
+- Oscar Castro
+- Valeria Navarrete
+
+## Task 2: Kafka
+
+The objective of the task is to understand the main features of Kafka and implement an authentication service and a security service against malicious activity communicated through a broker.
+
+To do so, two REST APIs were implemented that communicate through a Kafka channel, where the first one will have a route that receives a POST with the login data and the other one with a GET that sends the banned users.
