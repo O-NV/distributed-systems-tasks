@@ -15,6 +15,7 @@ For this, a client and a server have been created, both connected through gRPC, 
 ```bash
 git clone https://github.com/O-NV/distributed-systems-tasks.git
 cd distributed-systems-tasks
+cd task1
 sudo docker-compose up
 ```
 
