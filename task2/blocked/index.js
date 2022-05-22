@@ -58,7 +58,6 @@ app.get("/blocked", async (req, res) => {
           const finalTime = timestapm[countLoginUsers[user].count - 1];
           if (timeInterval(initTime, finalTime ) <= 60) {
             const findUserBlcked = userBlocked['users-blocked'].includes(user);
-            console.log(findUserBlcked + 'aaaaaaaaaaaaaaaa');
               if(!findUserBlcked)
               {
                 userBlocked['users-blocked'].push(user);
