@@ -41,12 +41,15 @@ It is recommended to use postman for the request of type post where in the body 
 ```
 ### Questions:
 
-Why does Kafka work well in this scenario?
+#### Why does Kafka work well in this scenario?
   
 Kafka has a lot of potential for this type of scenarios because it is a secure bridge to send the information and also because it can become a very stable and scalable system due to its characteristics where if necessary the number of brokers could be increased to avoid data bottlenecks.
 
-Based on the technologies you have at your disposal (Kafka, backend) what would you do to handle a large amount of users at the same time?
+#### Based on the technologies you have at your disposal (Kafka, backend) what would you do to handle a large number of users at the same time? 
 
+If you handle a large number of users, scalability is important, that is why the first activity I would do would be the creation of more brokers, so the load on the intermediaries would be more equitable. Analogously, I would include the use of partitioning and replication so that the kafka cluster can perform parallel actions. Once these actions have been carried out, it will be possible to observe that the availability of the service is ensured, since if a broker goes down, there will be another one that has the necessary information to be a backup.
+
+The Zookeeper is used for administration, such as assigning partitions, sending notifications in case of a change in the system architecture, selection of the leading broker for the different partitions of the topics, among others, that is why I would add another zookeeper, to avoid a possible bottleneck, since the system could become slow due to high congestion.
 
   
 ### Images dockers used
