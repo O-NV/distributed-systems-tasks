@@ -20,11 +20,14 @@ app.post("/login", async (req, res) => {
     await producer.send({
       topic: 'topic-name',
       messages: [
-        { key: JSON.stringify(user.user), value: JSON.stringify(user) },
+      { 
+        key: JSON.stringify(user.user), 
+        value: JSON.stringify(user) 
+      },
     ],
   })
   
-  res.send("Hello World login!");
+  res.send("Logeado");
 });
 
 app.listen(port, () => {

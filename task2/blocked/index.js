@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const { Kafka } = require('kafkajs');
 const { DateTime } = require('luxon');
-// const fs = require("fs");
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -18,27 +17,6 @@ function timeInterval(initTime, endTime) {
   const diff = endTime.diff(initTime, 'seconds').toObject();
   return diff.seconds;
 }
-
-// function writeJson(params){
-//   fs.readFile('./blocked.json',function(err,data){
-//       if(err){
-//           return console.error(err);
-//       }
-      
-//       const person = JSON.parse(data.toString());
-//       console.log(person);
-//       person['users-blocked'].push(params);
-//       person.total = person['users-blocked'].length;
-//       console.log(person.data);
-//       const str = JSON.stringify(person, null, 2);
-//       fs.writeFile('./blocked.json',str,function(err){
-//         if(err){
-//           console.error(err);
-//         }
-//         console.log('----------agregado exitosamente-------------');
-//       })
-//   })
-// }
 
 const userBlocked = {
   "users-blocked": [
@@ -79,10 +57,7 @@ app.get("/blocked", async (req, res) => {
           const initTime = timestapm[countLoginUsers[user].count - 5];
           const finalTime = timestapm[countLoginUsers[user].count - 1];
           if (timeInterval(initTime, finalTime ) <= 60) {
-            console.log('BAAAAAAAAAN');
             userBlocked['users-blocked'].push(user);
-            // const params = user;
-            // writeJson(params);
           }
           console.log(timeInterval(initTime, finalTime ));
         }
