@@ -2,6 +2,15 @@ const express = require("express");
 const cors = require("cors");
 const { Kafka } = require('kafkajs');
 const { DateTime } = require('luxon');
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  host: process.env.POSTGRESQL_HOST,
+  user: 'uwu',
+  password: '123',
+  database: 'tiendita',
+  port: '5432'
+});
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -18,10 +27,10 @@ function timeInterval(initTime, endTime) {
   return diff.seconds;
 }
 
-const userBlocked = {
-  "users-blocked": [
-  ]
-}
+// const userBlocked = {
+//   "users-blocked": [
+//   ]
+// }
 
 const countLoginUsers = {};
 const timestapm = [];
@@ -57,10 +66,15 @@ app.get("/blocked", async (req, res) => {
           const initTime = timestapm[countLoginUsers[user].count - 5];
           const finalTime = timestapm[countLoginUsers[user].count - 1];
           if (timeInterval(initTime, finalTime ) <= 60) {
-            const findUserBlcked = userBlocked['users-blocked'].includes(user);
-              if(!findUserBlcked)
+            // const findUserBlcked = userBlocked['users-blocked'].includes(user); 
+            const newUser = user.substring(1, user.length-1);
+            console.log(newUser);
+            const findUserBlcked = await pool.query('SELECT baneados.email FROM baneados where baneados.email = $1', [newUser]);
+            console.log(findUserBlcked.rows[0]); 
+            if(!findUserBlcked.rows[0])
               {
-                userBlocked['users-blocked'].push(user);
+                // userBlocked['users-blocked'].push(user);
+                await pool.query('INSERT INTO baneados(email) VALUES($1)', [newUser]);
               }
           }
           console.log(timeInterval(initTime, finalTime ));
@@ -69,7 +83,9 @@ app.get("/blocked", async (req, res) => {
       console.log(countLoginUsers);
     },
   })
-  res.send(userBlocked);
+  const userBlocked = await pool.query('SELECT baneados.email FROM baneados');
+  console.log(userBlocked.rows);
+  res.send(userBlocked.rows);
 });
 
 
