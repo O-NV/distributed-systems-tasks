@@ -20,6 +20,6 @@ The objective of the task is to understand the main features of Kafka and implem
 To do so, two REST APIs were implemented that communicate through a Kafka channel, where the first one will have a route that receives a POST with the login data and the other one with a GET that sends the banned users.
 
 ## Task 3: Cassandra
-Task 3 aims to understand the main functionalities and features of Cassandra. 
+Task 3 aims to understand the main functionalities and features of Cassandra by performing configurations to build a cluster and to program a REST API with CRUD operations.
 
-For this, configurations will be made to build a cluster and to program a REST API with CRUD operations.
+For this purpose, a drug sales system is created with 3 Cassandra nodes in which you can create prescription, edit prescription and delete prescription in the database. 
