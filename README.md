@@ -18,3 +18,8 @@ For this, a client and a server have been created, both connected through gRPC, 
 The objective of the task is to understand the main features of Kafka and implement an authentication service and a security service against malicious activity communicated through a broker.
 
 To do so, two REST APIs were implemented that communicate through a Kafka channel, where the first one will have a route that receives a POST with the login data and the other one with a GET that sends the banned users.
+
+## Task 3: Cassandra
+Task 3 aims to understand the main functionalities and features of Cassandra. 
+
+For this, configurations will be made to build a cluster and to program a REST API with CRUD operations.
