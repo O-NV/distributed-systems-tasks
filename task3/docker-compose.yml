@@ -1,0 +1,49 @@
+version: '2.2'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  api:
+    build: ./API
+    volumes:
+      - './Edit/API/index.js:/usr/src/app/index.js'
+    networks:
+      - app-tier
+    ports:
+      - "3000:3000"
+
+  cassandra-node1:
+    image: bitnami/cassandra:latest
+    volumes:
+      - './Cassandra/init-scripts:/docker-entrypoint-initdb.d'
+    networks:
+      - app-tier   
+    environment:
+      - CASSANDRA_CLUSTER_NAME=cassandra-cluster
+      - CASSANDRA_SEEDS=cassandra-node1,cassandra-node2,cassandra-node3
+      - CASSANDRA_PASSWORD_SEEDER=yes
+      - CASSANDRA_PASSWORD=password123
+
+  cassandra-node2:
+    image: bitnami/cassandra:latest
+    networks:
+      - app-tier
+    depends_on:
+      - cassandra-node1
+    environment:
+      - CASSANDRA_CLUSTER_NAME=cassandra-cluster
+      - CASSANDRA_SEEDS=cassandra-node1,cassandra-node2,cassandra-node3
+      - CASSANDRA_PASSWORD=password123
+
+  cassandra-node3:
+    image: bitnami/cassandra:latest
+    networks:
+      - app-tier
+    depends_on:
+      - cassandra-node1
+    environment:
+      - CASSANDRA_CLUSTER_NAME=cassandra-cluster
+      - CASSANDRA_SEEDS=cassandra-node1,cassandra-node2,cassandra-node3
+      - CASSANDRA_PASSWORD=password123
