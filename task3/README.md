@@ -67,6 +67,12 @@ Example of recipe elimination:
 
 2. Cassandra has mainly two strategies to maintain redundancy in data replication. Which are these? What is the advantage of one over the other? Which one would you use for the current case and why? Justify.
 
+The strategies that Cassandra uses to maintain redundancy in data replication are SimpleStrategy, which consist of placing the first replica in a node determined by the partitioner and the following replicas in the following nodes clockwise in the ring without taking into account the topology and NetworkTopologyStrategy, like the previous strategy the replicas are placed clockwise with the difference that in this strategy more data centers are needed.
+
+The advantage that NetworkTopologyStrategy has over SimpleStrategy is that the former can work with more data centers.
+
+In this case we would use SimpleStrategy because it is simpler and more appropriate to our system because we do not need more than one data center to carry it out unless we need to scale the system.
+
 3. Taking into account the context of the problem, do you believe that the proposed solution is the right one? What happens when you want to scale the solution? What improvements would you implement? Orient your answer towards Sharding (data replication/distribution) and comment on a strategy you could follow to sort the data.
 
 
