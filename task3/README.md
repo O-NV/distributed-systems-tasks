@@ -32,6 +32,8 @@ To use the application you must start by sending a mail request with a json cont
 
 ### Note:
 It is recommended to use postman for post type requests where the body is filled with a json type message like the following examples:
+
+Example of creation (user and recipe):
 ```
 {
  "nombre": "Melon",
@@ -44,7 +46,7 @@ It is recommended to use postman for post type requests where the body is filled
  "doctor": "El Waton de la Fruta"
 }
 ```
-
+Example of recipe editing:
 ```
 {
  "id": 1,
@@ -53,7 +55,7 @@ It is recommended to use postman for post type requests where the body is filled
  "doctor": "El Waton de la Fruta"
 }
 ```
-
+Example of recipe elimination:
 ```
 {
  "id": 1
