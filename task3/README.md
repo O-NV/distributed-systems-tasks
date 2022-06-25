@@ -17,9 +17,48 @@ cd task3
 sudo docker-compose up
 ```
 
+### Note:
+The execution of the code may have problems because of the ports that are running on your computer, for verification of these you can run the command:
+```bash
+sudo lsof -nP -iTCP -sTCP:LISTEN
+```
+and if you need to stop them run in your console: 
+```bash
+sudo kill -9 PID
+```
+
 ### Run the application
+To use the application you must start by sending a mail request with a json containing the access data (customer data and recipe) to the route http://localhost:3000/create to create the customer and the recipe, if the customer is already created only the recipe will be created, you can also edit any recipe from the route http://localhost:3000/edit sending a json with the new information or you can delete it from the route http://localhost:3000/delete sending a json with the id of the recipe.
 
+### Note:
+It is recommended to use postman for post type requests where the body is filled with a json type message like the following examples:
+```
+{
+ "nombre": "Melon",
+ "apellido": "Musk",
+ "rut": "1",
+ "email": "Xmelon_muskX@fruitter.com",
+ "fecha_nacimiento": "28/06/1971",
+ "comentario": "Amigdalitis",
+ "farmacos": "Paracetamol",
+ "doctor": "El Waton de la Fruta"
+}
+```
 
+```
+{
+ "id": 1,
+ "comentario": "Amigdalitis aguda",
+ "farmacos": "Paracetamol con aguita",
+ "doctor": "El Waton de la Fruta"
+}
+```
+
+```
+{
+ "id": 1
+}
+```
 
 ### Questions to answer:
 1. Explain the architecture that Cassandra handles. When the cluster is created, how are the nodes connected? What happens when a client makes a request to one of the nodes? What happens when one of the nodes disconnects? Is the network generated between the nodes always efficient? Is there load balancing?
