@@ -75,6 +75,10 @@ In this case we would use SimpleStrategy because it is simpler and more appropri
 
 3. Taking into account the context of the problem, do you believe that the proposed solution is the right one? What happens when you want to scale the solution? What improvements would you implement? Orient your answer towards Sharding (data replication/distribution) and comment on a strategy you could follow to sort the data.
 
+Yes because it is an efficient solution, in addition to being scalable if required, that fully complies with the request. What happens when you want to scale the system is to increase the number of nodes to better distribute the load among all nodes and also adjust the number of replications needed for each table.
+
+To improve this system what we would implement would be a greater number of nodes in the cluster, in addition to increasing the replication factor to make it more difficult to lose the information acquired from the recipes and users.
 
 ### Images dockers used
 - Node: [https://hub.docker.com/_/node](https://hub.docker.com/_/node)
+- Cassandra: [https://hub.docker.com/r/bitnami/cassandra](https://hub.docker.com/r/bitnami/cassandra)
