@@ -65,6 +65,17 @@ Example of recipe elimination:
 ### Questions to answer:
 1. Explain the architecture that Cassandra handles. When the cluster is created, how are the nodes connected? What happens when a client makes a request to one of the nodes? What happens when one of the nodes disconnects? Is the network generated between the nodes always efficient? Is there load balancing?
 
+Cassandra uses the peer-to-peer model to distribute data to be managed. To distribute them, tokens are used, each node is assigned a different one, and in this way the node where the information must be stored is known. Therefore, Cassandra balances the load.
+
+In Cassandra all nodes are equal, so any of the nodes could have the role of coordinator, and these are connected in a ring. The nodes communicate to perform the necessary operations to keep themselves updated and to keep the cluster active.
+
+In the event that a client makes a request to one of the nodes, it must choose which node will resolve the query. This choice is made by the coordinator. As mentioned above, all nodes can hold this position, and the node that receives the request becomes the coordinator momentarily. 
+
+When a node disconnects, the tokens assigned to each node present are redistributed. Therefore, the information is also redistributed. The data held by the disconnected node is not lost, since the data is replicated to other nodes. Also the nodes that are still present are responsible for notifying that a node was disconnected.
+
+The network generated between Cassandra nodes will not always be efficient, since it will depend on the use it is given. The network form is very effective if you need to manage and store a large amount of data in several server sources. However, if you want to use it in a context where a large number of nodes are inserted frequently, it would not be very efficient, since several resources are used to enter a new node and this may take longer than expected.
+
+
 2. Cassandra has mainly two strategies to maintain redundancy in data replication. Which are these? What is the advantage of one over the other? Which one would you use for the current case and why? Justify.
 
 The strategies that Cassandra uses to maintain redundancy in data replication are SimpleStrategy, which consist of placing the first replica in a node determined by the partitioner and the following replicas in the following nodes clockwise in the ring without taking into account the topology and NetworkTopologyStrategy, like the previous strategy the replicas are placed clockwise with the difference that in this strategy more data centers are needed.
