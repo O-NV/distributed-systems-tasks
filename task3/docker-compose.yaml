@@ -6,7 +6,7 @@ networks:
 
 services:
   cassandra-node1:
-    image: bitnami/cassandra:latest
+    image: bitnami/cassandra:4.0.4
     volumes:
       - './cql:/docker-entrypoint-initdb.d'
     networks:
@@ -18,7 +18,7 @@ services:
       - CASSANDRA_PASSWORD=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjYXNzYW5kcmEiOiJjdWxpYSJ9.fc6sW-Gx4RmJ6mGDTL-f6WsH6VZIj_s4NyTIFIrdGvY
 
   cassandra-node2:
-    image: bitnami/cassandra:latest
+    image: bitnami/cassandra:4.0.4
     networks:
       - app-tier
     depends_on:
@@ -29,7 +29,7 @@ services:
       - CASSANDRA_PASSWORD=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjYXNzYW5kcmEiOiJjdWxpYSJ9.fc6sW-Gx4RmJ6mGDTL-f6WsH6VZIj_s4NyTIFIrdGvY
 
   cassandra-node3:
-    image: bitnami/cassandra:latest
+    image: bitnami/cassandra:4.0.4
     networks:
       - app-tier
     depends_on:
